@@ -5,21 +5,21 @@ import CallToActionButton from "../CallToActionButton";
 const services = [
 	{
 		id: 1,
-		heading: "Personal Training",
+		heading: "Yoga",
 		image:
-			"https://images.unsplash.com/photo-1659176988433-4bb271684f28?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+			"https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1520&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 	},
 	{
 		id: 2,
-		heading: "Nutrition Plans",
+		heading: "Weightlifting",
 		image:
-			"https://plus.unsplash.com/premium_photo-1726096576282-efb80d87c7b8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+			"https://images.unsplash.com/photo-1674834726923-3ba828d37846?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 	},
 	{
 		id: 3,
-		heading: "Group Classes",
+		heading: "Educational Resources",
 		image:
-			"https://images.unsplash.com/photo-1652364690376-db27a1965bc0?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+			"https://plus.unsplash.com/premium_photo-1726618574519-2f03921a61d2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 	},
 ];
 
@@ -34,11 +34,11 @@ function ServiceList() {
 
 			<div>
 				<ServicesDescription>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
-					delectus repellendus dignissimos expedita est eaque sapiente magni
-					minima dolor maxime!
+					<strong>Elmnt</strong> offers personalized training, group classes,
+					and nutrition coaching to help you move better, feel stronger, and
+					live healthier—supporting you at every step of your wellness journey
 				</ServicesDescription>
-				<CallToActionButton>Join Now</CallToActionButton>
+				<CallToActionButton>Learn more</CallToActionButton>
 			</div>
 		</ServicesSection>
 	);

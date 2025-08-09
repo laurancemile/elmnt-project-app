@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { HiPhone } from "react-icons/hi2";
 import { HiMiniEnvelope } from "react-icons/hi2";
+import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import Logo from "../ui/Logo";
 import CallToActionButton from "../ui/CallToActionButton";
@@ -10,6 +12,7 @@ import GalleryList from "../ui/gallery/GalleryList";
 
 function Homepage() {
 	const { register, handleSubmit } = useForm();
+	const [scrollOpacity, setScrollOpacity] = useState(0);
 
 	function onSubmit(data) {
 		console.log(data);
@@ -18,6 +21,20 @@ function Homepage() {
 	function handleButtonClick() {
 		console.log("clicked");
 	}
+
+	useEffect(() => {
+		const handleScroll = () => {
+			// Calculate opacity based on scroll position (0 to 1)
+			const heroHeight = document.querySelector("#hero").offsetHeight;
+			const scrollY = window.scrollY;
+			let opacity = scrollY / heroHeight;
+			if (opacity > 1) opacity = 1;
+			setScrollOpacity(opacity);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 	return (
 		<>
 			{/* ------------ Header Start ------------ */}
@@ -28,30 +45,35 @@ function Homepage() {
 				<NavMenu>
 					<ul className="nav__list">
 						<li className="nav__item">
-							<a className="nav__link" href="#home">
+							<NavLink className="nav__link" to="/">
 								Home
-							</a>
+							</NavLink>
 						</li>
 						<li className="nav__item">
-							<a className="nav__link" href="#about">
+							<NavLink className="nav__link" to="/about">
 								About
-							</a>
+							</NavLink>
 						</li>
-						<li className="nav__item">
+						{/* <li className="nav__item">
 							<a className="nav__link" href="#shop">
 								Shop
 							</a>
-						</li>
+						</li> */}
 					</ul>
 				</NavMenu>
 			</HeaderSection>
-			{/* ------------ Header Start ------------ */}
+			{/* ------------ Header End ------------ */}
 
 			{/* ------------ Hero Start ------------ */}
-			<HeroSection>
-				<HeroTitle>Get in the groove</HeroTitle>
-				<HeroText>Exercise your mind and body!</HeroText>
-				<CallToActionButton>Join now</CallToActionButton>
+			<HeroSection id="hero">
+				<Overlay style={{ opacity: scrollOpacity }} />
+				<HeroContent>
+					<HeroTitle>
+						Get in the <span className="groove">groove</span>
+					</HeroTitle>
+					<HeroText>Exercise your mind and body!</HeroText>
+					<CallToActionButton>Join now</CallToActionButton>
+				</HeroContent>
 			</HeroSection>
 			{/* ------------ Hero End ------------ */}
 
@@ -65,11 +87,12 @@ function Homepage() {
 					<AboutText>
 						<AboutHeading>About Us</AboutHeading>
 						<AboutDescription>
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-							Laboriosam, dolores. Lorem ipsum dolor sit amet consectetur
-							adipisicing elit. Quas ducimus provident sunt possimus repudiandae
-							velit, magni, neque laudantium omnis voluptatem odit maxime enim
-							fugit.
+							<strong>ELMNT.</strong> is a newly established health and gym
+							lifestyle company dedicated to making life easier for individuals
+							seeking to elevate their well-being and self-improvement. Our
+							vision is to create a supportive community that fosters commitment
+							and motivation, empowering like-minded individuals to achieve
+							their health and lifestyle goals.
 						</AboutDescription>
 						<CallToActionButton>Join Now</CallToActionButton>
 					</AboutText>
@@ -123,9 +146,7 @@ function Homepage() {
 							required
 						/>
 
-						<SubmitButton role="button" type="submit">
-							Send Message
-						</SubmitButton>
+						<CallToActionButton>Submit</CallToActionButton>
 					</ContactForm>
 				</ContactLeft>
 
@@ -215,6 +236,11 @@ const NavMenu = styled.nav`
 
 	.nav__item {
 		list-style: none;
+		font-weight: 600;
+	}
+
+	.nav__item:hover {
+		color: var(--secondary-color);
 	}
 
 	.nav__link {
@@ -235,11 +261,37 @@ const HeroSection = styled.section`
 	align-items: center;
 	justify-content: center;
 	color: #fff;
+	position: relative;
+`;
+
+const Overlay = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	pointer-events: none;
+	transition: opacity 0.2s ease-out;
+	opacity: 0;
+`;
+
+const HeroContent = styled.div`
+	color: white;
+	text-align: center;
+	z-index: 1;
 `;
 
 const HeroTitle = styled.h2`
 	font-size: 8.6rem;
 	line-height: 1.2;
+	margin-bottom: 1.2rem;
+
+	.groove {
+		font-style: italic;
+	}
 `;
 
 const HeroText = styled.p`
@@ -282,6 +334,8 @@ const AboutDescription = styled.p`
 `;
 
 const ImageWrapper = styled.div`
+	border: 4px solid var(--secondary-color);
+
 	img {
 		width: 400px;
 		height: 400px;
@@ -303,36 +357,44 @@ const GalleryHeading = styled.h2`
 
 // -------------- Contact --------------//
 const ContactUsSection = styled.section`
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
 	padding: 6.4rem 12.6rem;
 	background-color: var(--primary-color);
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
 `;
 
 const ContactLeft = styled.div`
-	flex: 1;
+	background-color: #fff;
+	height: 460px;
+	padding: 3.2rem;
 `;
 
 const ContactRight = styled.div`
-	flex: 1;
+	height: 460px;
 
 	img {
 		width: 100%;
-		height: auto;
-		border-radius: 8px;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 2px;
 	}
 `;
 
-const ContactHeading = styled.h2``;
+const ContactHeading = styled.h2`
+	font-size: 2.8rem;
+	margin-bottom: 2.4rem;
+`;
 
 const ContactForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	gap: 1.2rem;
+	padding: 1.2rem;
 
 	input,
 	textarea {
-		padding: 1rem;
+		padding: 1.6rem;
 		font-size: 1rem;
 		border: 1px solid #ccc;
 		border-radius: 4px;

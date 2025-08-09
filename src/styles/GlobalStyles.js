@@ -15,13 +15,15 @@ const GlobalStyles = createGlobalStyle`
       :root {
             --primary-color: #000;
 
-            --secondary-color: oklch(76.5% 0.177 163.223);
+            --secondary-color: #116633;
+            --secondary-color-shade: #297547;
       }
 
       *, *::after, *::before {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+            transition: all 0.2s ease-in-out;
       }
 
       html {
@@ -38,6 +40,10 @@ const GlobalStyles = createGlobalStyle`
       .container {
             width: 80%;
             margin: auto;
+      }
+
+      .active {
+            border-bottom: 3px solid var(--secondary-color);
       }
 `;
 

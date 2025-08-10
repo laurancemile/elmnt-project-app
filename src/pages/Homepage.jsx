@@ -64,7 +64,7 @@ function Homepage() {
 			<HeroSection id="hero">
 				<Overlay style={{ opacity: scrollOpacity }} />
 				<HeroContent>
-					<HeroTitle>
+					<HeroTitle className="hero-title">
 						Get in the <span className="groove">groove</span>
 					</HeroTitle>
 					<HeroText>Exercise your mind and body!</HeroText>
@@ -254,7 +254,7 @@ const HeroSection = styled.section`
 	background: url("https://images.unsplash.com/photo-1625151936268-e1ffba534f20?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 		no-repeat center center fixed;
 	background-size: cover;
-	height: 100vh;
+	height: 80vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

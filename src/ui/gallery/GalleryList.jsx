@@ -21,7 +21,6 @@ const GallerySection = styled.section`
 `;
 
 const GalleryGrid = styled.div`
-	display: flex;
 	gap: 1.6rem;
 	list-style: none;
 	padding: 0;

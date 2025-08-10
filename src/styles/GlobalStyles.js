@@ -1,20 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-      /* ----------------------------------------- */
-      /* Global Styles */
-      /* ----------------------------------------- */
-      /* 
-      - Font sizes (px)
-            10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
-
-      - Spacing system (px)
-            2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
-      */
-
       :root {
             --primary-color: #000;
-
             --secondary-color: #116633;
             --secondary-color-shade: #297547;
       }
@@ -33,12 +21,13 @@ const GlobalStyles = createGlobalStyle`
       body {
             font-family: "Open Sans", sans-serif;
             color: var(--primary-color);
-            line-height: 1;
+            line-height: 1.5;
             font-weight: 400;
+            background-color: #fff;
       }
 
       .container {
-            width: 80%;
+            width: min(90%, 1200px);
             margin: auto;
       }
 
@@ -46,37 +35,43 @@ const GlobalStyles = createGlobalStyle`
             border-bottom: 3px solid var(--secondary-color);
       }
 
+      /* -------- Tablet Breakpoint -------- */
       @media (max-width: 69.75rem) {
             html {
-                  font-size: 56.25% ;
+                  font-size: 56.25%;
             }
       }
 
+      /* -------- Mobile & Tablet Landscape -------- */
       @media (max-width: 61.875rem) {
             /* About */
             .about-wrapper {
+                  display: flex;
                   flex-direction: column;
                   grid-template-columns: 1fr;
+                  gap: 2.4rem;
             }
 
             .image-wrapper {
                   order: -1;
                   margin-bottom: 4.8rem;
-                  max-width: unset;
+                  max-width: 100%;
                   width: 100%;
-                  height: 300px; /* fixed height for mobile */
+                  height: auto;
             }
 
             .image-wrapper img {
                   width: 100%;
-                  height: 100%;
-                  object-fit: cover; /* makes it fill both width & height */
+                  height: auto;
+                  max-height: 300px;
+                  object-fit: cover;
                   display: block;
             }
 
             /* Gallery */
             .gallery-grid {
-                  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                  flex-direction: column !important;
+                  gap: 2.4rem;
             }
 
             .gallery-section {
@@ -85,9 +80,11 @@ const GlobalStyles = createGlobalStyle`
 
             /* Contact */
             .contact-section {
+                  display: grid;
                   grid-template-columns: 1fr;
                   justify-content: center;
-                  padding:  4.8rem;
+                  gap: 2.4rem;
+                  padding: 4.8rem 1.2rem;
             }
 
             .contact-image {
@@ -95,9 +92,18 @@ const GlobalStyles = createGlobalStyle`
             }
       }
 
+      /* -------- Small Mobile -------- */
       @media (max-width: 39.25rem) {
             .gallery-grid {
-                  flex-direction: column;
+                  grid-template-columns: 1fr; /* single column */
+            }
+      }
+
+      /* -------- Hero Title Scaling -------- */
+      @media (max-width: 47.5rem) {
+            .hero-title {
+                  font-size: 4.4rem;
+                  text-align: center;
             }
       }
 `;

@@ -18,10 +18,6 @@ function Homepage() {
 		console.log(data);
 	}
 
-	function handleButtonClick() {
-		console.log("clicked");
-	}
-
 	useEffect(() => {
 		const handleScroll = () => {
 			// Calculate opacity based on scroll position (0 to 1)
@@ -83,7 +79,7 @@ function Homepage() {
 
 			{/* ------------ About Start ------------ */}
 			<AboutSection>
-				<ContentWrapper className="container">
+				<ContentWrapper className="container about-wrapper">
 					<AboutText>
 						<AboutHeading>About Us</AboutHeading>
 						<AboutDescription>
@@ -97,7 +93,7 @@ function Homepage() {
 						<CallToActionButton>Join Now</CallToActionButton>
 					</AboutText>
 
-					<ImageWrapper>
+					<ImageWrapper className="image-wrapper">
 						<img
 							src="https://images.unsplash.com/photo-1709315849916-bcd31d054deb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 							alt="Group exercising"
@@ -108,15 +104,21 @@ function Homepage() {
 			{/* ------------ About End ------------ */}
 
 			{/* ------------ Gallery Start ------------ */}
-			<GallerySection aria-labelledby="gallery-heading" className="container">
+			<GallerySection
+				aria-labelledby="gallery-heading"
+				className="container gallery-section"
+			>
 				<GalleryHeading id="gallery-heading">Our Gallery</GalleryHeading>
 				<GalleryList />
 			</GallerySection>
 			{/* ------------ Gallery End ------------ */}
 
 			{/* ------------ Contact Start ------------ */}
-			<ContactUsSection aria-labelledby="contact-heading">
-				<ContactLeft>
+			<ContactUsSection
+				className="contact-section"
+				aria-labelledby="contact-heading"
+			>
+				<ContactLeft className="contact-form">
 					<ContactHeading id="contact-heading">Contact Us</ContactHeading>
 					<ContactForm>
 						<label htmlFor="name">Name</label>
@@ -150,7 +152,7 @@ function Homepage() {
 					</ContactForm>
 				</ContactLeft>
 
-				<ContactRight>
+				<ContactRight className="contact-image">
 					<img
 						src="https://images.unsplash.com/photo-1584670508996-c3144057a8d0?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 						alt="Team collaboration at workspace"
@@ -193,10 +195,6 @@ function Homepage() {
 				</FooterCopyright>
 			</FooterSection>
 			{/* ------------ Footer End ------------ */}
-
-			<button onClick={handleButtonClick} aria-disabled="true">
-				Test
-			</button>
 		</>
 	);
 }
@@ -254,7 +252,8 @@ const NavMenu = styled.nav`
 // -------------- Hero -------------- //
 const HeroSection = styled.section`
 	background: url("https://images.unsplash.com/photo-1625151936268-e1ffba534f20?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-		fixed repeat 100%;
+		no-repeat center center fixed;
+	background-size: cover;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -304,7 +303,6 @@ const HeroText = styled.p`
 const AboutSection = styled.section`
 	background: url("https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 		no-repeat;
-
 	color: #fff;
 	padding: 6.4rem 0;
 	display: flex;
@@ -313,7 +311,8 @@ const AboutSection = styled.section`
 const ContentWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	justify-items: center;
+	gap: 3.2rem;
+	/* justify-items: center; */
 	align-items: center;
 `;
 
@@ -335,10 +334,11 @@ const AboutDescription = styled.p`
 
 const ImageWrapper = styled.div`
 	border: 4px solid var(--secondary-color);
+	max-width: 300px;
 
 	img {
-		width: 400px;
-		height: 400px;
+		width: 100%;
+		height: auto;
 		object-fit: cover;
 		border-radius: 3px;
 	}

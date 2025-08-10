@@ -5,7 +5,7 @@ import GalleryItem from "./GalleryItem";
 function GalleryList() {
 	return (
 		<GallerySection aria-label="Image Gallery">
-			<GalleryGrid as="ul">
+			<GalleryGrid className="gallery-grid" as="ul">
 				{galleryData.map((gallery) => (
 					<GalleryListItem as="li" key={gallery.id}>
 						<GalleryItem item={gallery} />
@@ -21,8 +21,7 @@ const GallerySection = styled.section`
 `;
 
 const GalleryGrid = styled.div`
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	display: flex;
 	gap: 1.6rem;
 	list-style: none;
 	padding: 0;

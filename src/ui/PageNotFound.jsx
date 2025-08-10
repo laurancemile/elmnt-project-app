@@ -9,7 +9,7 @@ function PageNotFound({ onClick }) {
 				Sorry, the page you are looking for doesn’t exist or has been moved.
 			</Description>
 			<CallToActionButton to={"/"} onClick={onClick}>
-				Go Back
+				&larr; Go Back
 			</CallToActionButton>
 		</NotFoundSection>
 	);

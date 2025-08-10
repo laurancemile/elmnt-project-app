@@ -3,8 +3,10 @@ import styled from "styled-components";
 function ServiceItem({ service }) {
 	const { heading, image } = service;
 
+	function handleMouseEnter() {}
+
 	return (
-		<ServiceCard>
+		<ServiceCard onMouseEnter={handleMouseEnter}>
 			<ServiceImage src={image} alt={heading} />
 			<ServiceHeading>{heading}</ServiceHeading>
 		</ServiceCard>

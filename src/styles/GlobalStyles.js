@@ -45,6 +45,61 @@ const GlobalStyles = createGlobalStyle`
       .active {
             border-bottom: 3px solid var(--secondary-color);
       }
+
+      @media (max-width: 69.75rem) {
+            html {
+                  font-size: 56.25% ;
+            }
+      }
+
+      @media (max-width: 61.875rem) {
+            /* About */
+            .about-wrapper {
+                  flex-direction: column;
+                  grid-template-columns: 1fr;
+            }
+
+            .image-wrapper {
+                  order: -1;
+                  margin-bottom: 4.8rem;
+                  max-width: unset;
+                  width: 100%;
+                  height: 300px; /* fixed height for mobile */
+            }
+
+            .image-wrapper img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover; /* makes it fill both width & height */
+                  display: block;
+            }
+
+            /* Gallery */
+            .gallery-grid {
+                  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+
+            .gallery-section {
+                  padding: 4.8rem 1.2rem;
+            }
+
+            /* Contact */
+            .contact-section {
+                  grid-template-columns: 1fr;
+                  justify-content: center;
+                  padding:  4.8rem;
+            }
+
+            .contact-image {
+                  display: none;
+            }
+      }
+
+      @media (max-width: 39.25rem) {
+            .gallery-grid {
+                  flex-direction: column;
+            }
+      }
 `;
 
 export default GlobalStyles;
